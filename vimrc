@@ -88,13 +88,16 @@ set tags=$NEMU_HOME/.tags
 set vb t_vb=
 set nohls
 
+
 set nowrap
 
-map <C-K>  <C-V>
-map <F9>  :w<CR>:!gcc % -o /tmp/temp.out -lm && /tmp/temp.out < /tmp/in.txt<CR>
-map <F10>  :w<CR>:!python3 %<CR>
-map <F2>  :w<CR>:make run mainargs=a<CR>
 map <F1>  :q!<CR>
+map <F2>  :w<CR>:make run mainargs=a<CR>
+map <F3>  :s/\%#\d\+/\=printf("0x%x",submatch(0))/g<CR>
+map <F9>  :w<CR>:!gcc % -o /tmp/temp.out -lm && /tmp/temp.out < /tmp/in.txt<CR>
+"map <F10> :w<CR>:!python3 %<CR>
+map <F10> :w<CR>:!python3 % This is a temporary test file<CR>
+map <C-K>  <C-V>
 
 "创建文件头
 autocmd BufNewFile *.py,*.tex exec ":call SetTitle()"
@@ -130,6 +133,3 @@ hi User2 cterm=none ctermfg=208 ctermbg=0
 hi User3 cterm=none ctermfg=169 ctermbg=0
 hi User4 cterm=none ctermfg=100 ctermbg=0
 hi User5 cterm=none ctermfg=green ctermbg=0
-
-
-"set background=dark
