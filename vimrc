@@ -60,7 +60,6 @@ set bufhidden=hide " 当buffer被丢弃的时候隐藏它
 set number " 显示行号
 set cursorline " 突出显示当前行
 set ruler " 打开状态栏标尺
-set shiftwidth=2 " 设定 << 和 >> 命令移动时的宽度为 2
 set softtabstop=2 " 使得按退格键时可以一次删掉 2 个空格
 set tabstop=2 " 设定 tab 长度为 2
 set nobackup " 覆盖文件时不备份
@@ -89,11 +88,18 @@ set vb t_vb=
 set nohls
 
 
+set expandtab
+set tabstop=2
+set shiftwidth=2 " 设定 << 和 >> 命令移动时的宽度为 2
+
 set nowrap
 
 map <F1>  :q!<CR>
 map <F2>  :w<CR>:make run mainargs=a<CR>
 map <F3>  :s/\%#\d\+/\=printf("0x%x",submatch(0))/g<CR>
+
+map <F5>  :%!clang-format<CR>
+
 map <F9>  :w<CR>:!gcc % -o /tmp/temp.out -lm && /tmp/temp.out < /tmp/in.txt<CR>
 "map <F10> :w<CR>:!python3 %<CR>
 map <F10> :w<CR>:!python3 % This is a temporary test file<CR>
